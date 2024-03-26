@@ -1,0 +1,7 @@
+{
+    "_type":"prompt",
+    "template":"Who is the director of {movie}",
+    "input_variables":[
+        "movie"
+    ]
+}
