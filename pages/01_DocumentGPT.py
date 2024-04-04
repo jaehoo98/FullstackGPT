@@ -11,12 +11,14 @@ from langchain.memory import ConversationBufferMemory
 
 import streamlit as st
 
+OPENAI_API_KEY=""
+
+
 st.set_page_config(
     page_title="DocumentGPT",
     page_icon="📃",
 )
 
-st.sidebar.write("https://github.com/jaehoo98/FullstackGPT/commit/ccabcf2892b0f0b9fed3d43462a4eaa06f1d40cc")
 
 memory = ConversationBufferMemory(return_messages=True)
 def load_memory(_):
@@ -134,6 +136,9 @@ with st.sidebar:
         "Upload a .txt .pdf or .docx file",
         type=["pdf", "txt", "docx"],
     )
+    OPENAI_API_KEY=st.text_input("Open AI Key")
+    st.write("https://github.com/jaehoo98/FullstackGPT/commit/ccabcf2892b0f0b9fed3d43462a4eaa06f1d40cc")
+
 
 if file:
     retriever = embed_file(file)
