@@ -137,7 +137,7 @@ with st.sidebar:
         type=["pdf", "txt", "docx"],
     )
     OPENAI_API_KEY=st.text_input("Open AI Key")
-    st.write("https://github.com/jaehoo98/FullstackGPT/commit/ccabcf2892b0f0b9fed3d43462a4eaa06f1d40cc")
+    st.write("https://github.com/jaehoo98/FullstackGPT/commit/04023c9e51c3945012cbabe14d93825e825f81c1")
 
 
 if file:
