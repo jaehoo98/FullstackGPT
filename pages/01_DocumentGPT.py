@@ -20,6 +20,29 @@ st.set_page_config(
 )
 
 
+st.title("DocumentGPT")
+
+st.markdown(
+    """
+Welcome!
+            
+Use this chatbot to ask questions to an AI about your files!
+
+Upload your files on the sidebar.
+"""
+)
+
+with st.sidebar:
+    file = st.file_uploader(
+        "Upload a .txt .pdf or .docx file",
+        type=["pdf", "txt", "docx"],
+    )
+    OPENAI_API_KEY=st.text_input("Open AI Key")
+    st.write("https://github.com/jaehoo98/FullstackGPT/commit/04023c9e51c3945012cbabe14d93825e825f81c1")
+
+
+
+
 memory = ConversationBufferMemory(return_messages=True)
 def load_memory(_):
     return memory.load_memory_variables({})["history"]
@@ -39,6 +62,7 @@ class ChatCallbackHandler(BaseCallbackHandler):
 
 
 llm = ChatOpenAI(
+    openai_api_key=OPENAI_API_KEY,
     temperature=0.1,
     streaming=True,
     callbacks=[
@@ -117,27 +141,6 @@ prompt = ChatPromptTemplate.from_messages(
         ("human", "{question}"),
     ]
 )
-
-
-st.title("DocumentGPT")
-
-st.markdown(
-    """
-Welcome!
-            
-Use this chatbot to ask questions to an AI about your files!
-
-Upload your files on the sidebar.
-"""
-)
-
-with st.sidebar:
-    file = st.file_uploader(
-        "Upload a .txt .pdf or .docx file",
-        type=["pdf", "txt", "docx"],
-    )
-    OPENAI_API_KEY=st.text_input("Open AI Key")
-    st.write("https://github.com/jaehoo98/FullstackGPT/commit/04023c9e51c3945012cbabe14d93825e825f81c1")
 
 
 if file:
