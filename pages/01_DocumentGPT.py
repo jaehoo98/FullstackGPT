@@ -38,7 +38,7 @@ with st.sidebar:
         type=["pdf", "txt", "docx"],
     )
     OPENAI_API_KEY=st.text_input("Open AI Key")
-    st.write("https://github.com/jaehoo98/FullstackGPT/commit/04023c9e51c3945012cbabe14d93825e825f81c1")
+    st.write("https://github.com/jaehoo98/FullstackGPT/commit/f7e48d185f73f568902426e29ab31b1b1c1dc88d")
 
 
 
