@@ -38,7 +38,7 @@ with st.sidebar:
             "Upload a .txt .pdf or .docx file",
             type=["pdf", "txt", "docx"],
         )
-    st.write("https://github.com/jaehoo98/FullstackGPT/commit/f7e48d185f73f568902426e29ab31b1b1c1dc88d")
+    st.write("https://github.com/jaehoo98/FullstackGPT/commit/d63e6ad10415f072e8619abc76cc31c233b18f7e")
 
 
 
