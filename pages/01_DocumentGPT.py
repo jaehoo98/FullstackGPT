@@ -8,7 +8,6 @@ from langchain.vectorstores.faiss import FAISS
 from langchain.chat_models import ChatOpenAI
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.memory import ConversationBufferMemory
-import openai
 import streamlit as st
 
 OPENAI_API_KEY=""
@@ -33,12 +32,12 @@ Upload your files on the sidebar.
 )
 
 with st.sidebar:
-    file = st.file_uploader(
-        "Upload a .txt .pdf or .docx file",
-        type=["pdf", "txt", "docx"],
-    )
-    OPENAI_API_KEY=st.text_input("Open AI Key")
-    openai.api_key = (OPENAI_API_KEY)
+    OPENAI_API_KEY=st.text_input("OpenAI API Key", type = "password",)
+    if OPENAI_API_KEY.startswith('sk-'):
+        file = st.file_uploader(
+            "Upload a .txt .pdf or .docx file",
+            type=["pdf", "txt", "docx"],
+        )
     st.write("https://github.com/jaehoo98/FullstackGPT/commit/f7e48d185f73f568902426e29ab31b1b1c1dc88d")
 
 
@@ -144,7 +143,7 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 
-if file:
+if OPENAI_API_KEY.startswith('sk-') and file:
     retriever = embed_file(file)
     send_message("I'm ready! Ask away!", "ai", save=False)
     paint_history()
