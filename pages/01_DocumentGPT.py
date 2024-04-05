@@ -8,7 +8,7 @@ from langchain.vectorstores.faiss import FAISS
 from langchain.chat_models import ChatOpenAI
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.memory import ConversationBufferMemory
-
+import openai
 import streamlit as st
 
 OPENAI_API_KEY=""
@@ -19,7 +19,30 @@ st.set_page_config(
     page_icon="📃",
 )
 
-st.sidebar.write("https://github.com/jaehoo98/FullstackGPT/commit/ccabcf2892b0f0b9fed3d43462a4eaa06f1d40cc")
+
+st.title("DocumentGPT")
+
+st.markdown(
+    """
+Welcome!
+            
+Use this chatbot to ask questions to an AI about your files!
+
+Upload your files on the sidebar.
+"""
+)
+
+with st.sidebar:
+    file = st.file_uploader(
+        "Upload a .txt .pdf or .docx file",
+        type=["pdf", "txt", "docx"],
+    )
+    OPENAI_API_KEY=st.text_input("Open AI Key")
+    openai.api_key = (OPENAI_API_KEY)
+    st.write("https://github.com/jaehoo98/FullstackGPT/commit/f7e48d185f73f568902426e29ab31b1b1c1dc88d")
+
+
+
 
 memory = ConversationBufferMemory(return_messages=True)
 def load_memory(_):
