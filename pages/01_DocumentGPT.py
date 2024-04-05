@@ -16,8 +16,6 @@ st.set_page_config(
     page_icon="📃",
 )
 
-st.sidebar.write("https://github.com/jaehoo98/FullstackGPT/commit/ccabcf2892b0f0b9fed3d43462a4eaa06f1d40cc")
-
 memory = ConversationBufferMemory(return_messages=True)
 def load_memory(_):
     return memory.load_memory_variables({})["history"]
